@@ -222,7 +222,7 @@ function enableChat(temporarily)
 
   modules.game_walking.disableWSAD()
 
-  consoleToggleChat:setTooltip(tr("Disable chat mode, allow to walk using ASDW"))
+  consoleToggleChat:setTooltip(tr("Disable chat mode to walk using WSAD"))
 end
 
 function disableChat(temporarily)
@@ -881,6 +881,13 @@ function sendMessage(message, tab)
   local chatCommandPrivateReady
   local chatCommandMessage
 
+  -- player to NPC talk
+  chatCommandMessage = message:match("^%#[n|N] (.*)")
+  if chatCommandMessage ~= nil then
+    chatCommandSayMode = 'privatePlayerToNpc'
+    channel = 0
+    message = chatCommandMessage
+  end	 
   -- player used yell command
   chatCommandMessage = message:match("^%#[y|Y] (.*)")
   if chatCommandMessage ~= nil then

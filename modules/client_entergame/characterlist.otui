@@ -43,7 +43,7 @@ CharacterWidget < UIWidget
 
 StaticMainWindow
   id: charactersWindow
-  !text: tr('Character List')
+  !text: tr('Select Character')
   visible: false
   size: 350 400
   $mobile:
@@ -109,10 +109,10 @@ StaticMainWindow
     
     $!on:
       image-color: red    
-      !text: tr('Auto reconnect: Off')
+      !text: tr('Auto Reconnect: Off')
 
     $on:
-      !text: tr('Auto reconnect: On')
+      !text: tr('Auto Reconnect: On')
       image-color: green
 
   Button

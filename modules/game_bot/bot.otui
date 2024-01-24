@@ -33,7 +33,7 @@ MiniWindow
     ComboBox
       id: config
       &menuScroll: true
-      &menuHeight: 450
+      &menuHeight: 25
       &menuScrollStep: 100
       &parentWidth: true
       anchors.top: parent.top

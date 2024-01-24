@@ -176,7 +176,7 @@ FlagWindow < MainWindow
     id: okButton
     !text: tr('Ok')
     width: 64
-    anchors.right: next.left
+    anchors.right: parent.left
     anchors.bottom: parent.bottom
     margin-right: 10
 

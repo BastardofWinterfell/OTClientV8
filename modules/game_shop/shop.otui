@@ -87,7 +87,7 @@ ShopOffer < Panel
     
   Button
     id: buyButton
-    text: BUY
+    text: Buy
     height: 25
     anchors.verticalCenter: parent.verticalCenter
     anchors.left: prev.right
@@ -159,7 +159,7 @@ MainWindow
       anchors.top: prev.bottom
       margin-top: 10
       visible: false
-      !text: tr("Buy points")
+      !text: tr("Buy Coins")
 
   Panel
     id: adPanel
@@ -221,7 +221,7 @@ MainWindow
 
   Button
     id: transactionHistory
-    !text: tr('Transaction history')
+    !text: tr('Transaction History')
     width: 128
     anchors.left: parent.left
     anchors.bottom: parent.bottom

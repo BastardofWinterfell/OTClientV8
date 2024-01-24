@@ -24,8 +24,8 @@ local ping = {}
 local lastSleepTimeReset = 0
 
 function init()
-  statsButton = modules.client_topmenu.addLeftButton('statsButton', 'Debug Info', '/images/topbuttons/debug', toggle)
-  statsButton:setOn(false)
+  --statsButton = modules.client_topmenu.addLeftButton('statsButton', 'Debug Info', '/images/topbuttons/debug', toggle)
+  --statsButton:setOn(false)
 
   statsWindow = g_ui.displayUI('stats')
   statsWindow:hide()

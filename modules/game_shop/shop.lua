@@ -272,15 +272,15 @@ end
 function onStoreError(errorType, message)
   if not shop or otcv8shop then return end
   if not transferWindow:isVisible() then
-    processMessage({title="Shop Error", msg=message})
+    processMessage({title="Error", msg=message})
   else
-    processMessage({title="Gift coins error", msg=message})
+    processMessage({title="Error", msg=message})
   end
 end
 
 function onCoinBalance(coins, transferableCoins)
   if not shop or otcv8shop then return end
-  shop.infoPanel.points:setText(tr("Points:") .. " " .. coins)
+  shop.infoPanel.points:setText(tr("Tibia Coins:") .. " " .. coins)
   transferWindow.coinsBalance:setText(tr('Transferable Tibia Coins: ') .. coins)
   transferWindow.coinsAmount:setMaximum(coins)
   shop.infoPanel.buy:hide()
@@ -401,7 +401,7 @@ function processStatus(data)
     processAd(data['ad'])
   end
   if data['points'] then
-    shop.infoPanel.points:setText(tr("Points:") .. " " .. data['points'])
+    shop.infoPanel.points:setText(tr("Tibia Coins:") .. " " .. data['points'])
   end
   if data['buyUrl'] and data['buyUrl']:sub(1, 4):lower() == "http" then
     shop.infoPanel.buy:show()
@@ -579,10 +579,10 @@ function buyOffer(widget)
         msgWindow:destroy()
       end
       
-      local title = tr("Buying from shop")
-      local msg = "Do you want to buy " ..  item.title .. " for " .. item.cost .. " premium points?"
+      local title = tr("Confirmation of Purchase")
+      local msg = "Do you want to buy " ..  item.title .. " for " .. item.cost .. " Tibia Coins?"
       msgWindow = displayGeneralBox(title, msg, {
-          { text=tr('Yes'), callback=buyConfirmed },
+          { text=tr('Buy'), callback=buyConfirmed },
           { text=tr('No'), callback=buyCanceled },
           anchor=AnchorHorizontalCenter}, buyConfirmed, buyCanceled)
       msgWindow:show()

@@ -14,8 +14,8 @@ UIWidget
     anchors.bottom: parent.bottom
     text-align: center
     text-auto-resize: false
-    width: 220
-    height: 90
+    width: 0
+    height: 0
     padding: 2
     color: #ffffff
     font: terminus-14px-bold

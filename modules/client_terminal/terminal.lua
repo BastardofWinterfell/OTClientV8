@@ -140,8 +140,8 @@ function init()
 
   terminalWindow.onDoubleClick = popWindow
 
-  terminalButton = modules.client_topmenu.addLeftButton('terminalButton', tr('Terminal') .. ' (Ctrl + T)', '/images/topbuttons/terminal', toggle)
-  terminalButton:setOn(false)
+  --terminalButton = modules.client_topmenu.addLeftButton('terminalButton', tr('Terminal') .. ' (Ctrl + T)', '/images/topbuttons/terminal', toggle)
+  --terminalButton:setOn(false)
   g_keyboard.bindKeyDown('Ctrl+T', toggle)
 
   commandHistory = g_settings.getList('terminal-history')

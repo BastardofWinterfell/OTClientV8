@@ -65,30 +65,31 @@ MiniWindow
 
       BattlePlayers
         id: hidePlayers
-        !tooltip: tr('Hide players')
-        @onSetup: if g_app.isMobile() then self:setChecked(true) end
+        !tooltip: tr('Hide Players')
+        @onSetup: self:setChecked(true)
         @onCheckChange: modules.game_battle.checkCreatures()
           
       BattleNPCs
         id: hideNPCs
-        !tooltip: tr('Hide Npcs')
-        @onSetup: if g_app.isMobile() then self:setChecked(true) end
+        !tooltip: tr('Hide NPCs')
+        @onSetup: self:setChecked(true)
         @onCheckChange: modules.game_battle.checkCreatures()
 
       BattleMonsters
         id: hideMonsters
-        !tooltip: tr('Hide monsters')
+        !tooltip: tr('Hide Monsters')
         @onCheckChange: modules.game_battle.checkCreatures()
 
       BattleSkulls
         id: hideSkulls
-        !tooltip: tr('Hide non-skull players')
+        !tooltip: tr('Hide Non-Skull Players')
+        @onSetup: self:setChecked(true)
         @onCheckChange: modules.game_battle.checkCreatures()
 
       BattleParty
         id: hideParty
-        !tooltip: tr('Hide party members')
-        @onSetup: if g_app.isMobile() then self:setChecked(true) end
+        !tooltip: tr('Hide Party Members')
+        @onSetup: self:setChecked(true)
         @onCheckChange: modules.game_battle.checkCreatures()
 
     Panel

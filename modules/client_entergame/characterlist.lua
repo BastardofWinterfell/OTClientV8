@@ -32,7 +32,7 @@ local function tryLogin(charInfo, tries)
   CharacterList.hide()
   g_game.loginWorld(G.account, G.password, charInfo.worldName, charInfo.worldHost, charInfo.worldPort, charInfo.characterName, G.authenticatorToken, G.sessionKey)
   g_logger.info("Login to " .. charInfo.worldHost .. ":" .. charInfo.worldPort)
-  loadBox = displayCancelBox(tr('Please wait'), tr('Connecting to game server...'))
+  loadBox = displayCancelBox(tr('Connecting'), tr('Connecting to the game world. Please wait.'))
   connect(loadBox, { onCancel = function()
                                   loadBox = nil
                                   g_game.cancelLogin()
@@ -116,7 +116,7 @@ end
 function onGameLoginToken(unknown)
   CharacterList.destroyLoadBox()
   -- TODO: make it possible to enter a new token here / prompt token
-  errorBox = displayErrorBox(tr("Two-Factor Authentification"), 'A new authentification token is required.\nPlease login again.')
+  errorBox = displayErrorBox(tr("Two-Factor Authentication"), 'A new authentication token is required.\nPlease login again.')
   errorBox.onOk = function()
     errorBox = nil
     EnterGame.show()
@@ -138,7 +138,7 @@ end
 
 function onGameUpdateNeeded(signature)
   CharacterList.destroyLoadBox()
-  errorBox = displayErrorBox(tr("Update needed"), tr('Enter with your account again to update your client.'))
+  errorBox = displayErrorBox(tr("Update Needed"), tr('Enter your account information again to update your client.'))
   errorBox.onOk = function()
     errorBox = nil
     CharacterList.showAgain()
@@ -305,15 +305,15 @@ function CharacterList.create(characters, account, otui)
     status = tr(' (Suspended)')
   end
 
-  if account.subStatus == SubscriptionStatus.Free and account.premDays < 1 then
+  --[[if account.subStatus == SubscriptionStatus.Free and account.premDays < 1 then
     accountStatusLabel:setText(('%s%s'):format(tr('Free Account'), status))
-  else
+  else]]
     if account.premDays == 0 or account.premDays == 65535 then
       accountStatusLabel:setText(('%s%s'):format(tr('Gratis Premium Account'), status))
     else
-      accountStatusLabel:setText(('%s%s'):format(tr('Premium Account (%s) days left', account.premDays), status))
+      accountStatusLabel:setText(('%s%s'):format(tr('Premium Account (%s days left)', account.premDays), status))
     end
-  end
+  --end
 
   if account.premDays > 0 and account.premDays <= 7 then
     accountStatusLabel:setOn(true)
@@ -390,7 +390,7 @@ function CharacterList.doLogin()
     end
     tryLogin(charInfo)
   else
-    displayErrorBox(tr('Error'), tr('You must select a character to login!'))
+    displayErrorBox(tr('Error'), tr('You must select a character to login.'))
   end
 end
 

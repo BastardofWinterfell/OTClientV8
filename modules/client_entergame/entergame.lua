@@ -61,7 +61,7 @@ local function onCharacterList(protocol, characters, account, otui)
 end
 
 local function onUpdateNeeded(protocol, signature)
-  return EnterGame.onError(tr('Your client needs updating, try redownloading it.'))
+  return EnterGame.onError(tr('Update failed. Please reinstall Tibia to update your client.'))
 end
 
 local function onProxyList(protocol, proxies)
@@ -395,7 +395,7 @@ end
 function EnterGame.clearAccountFields()
   enterGame:getChildById('accountNameTextEdit'):clearText()
   enterGame:getChildById('accountPasswordTextEdit'):clearText()
-  enterGame:getChildById('accountTokenTextEdit'):clearText()
+  --enterGame:getChildById('accountTokenTextEdit'):clearText()
   enterGame:getChildById('accountNameTextEdit'):focus()
   g_settings.remove('account')
   g_settings.remove('password')
@@ -431,7 +431,7 @@ function EnterGame.doLogin(account, password, token, host)
   
   G.account = account or enterGame:getChildById('accountNameTextEdit'):getText()
   G.password = password or enterGame:getChildById('accountPasswordTextEdit'):getText()
-  G.authenticatorToken = token or enterGame:getChildById('accountTokenTextEdit'):getText()
+  --G.authenticatorToken = token or enterGame:getChildById('accountTokenTextEdit'):getText()
   G.stayLogged = true
   G.server = serverSelector:getText():trim()
   G.host = host or serverHostTextEdit:getText()
@@ -506,7 +506,7 @@ function EnterGame.doLogin(account, password, token, host)
   protocolLogin.onProxyList = onProxyList
 
   EnterGame.hide()
-  loadBox = displayCancelBox(tr('Please wait'), tr('Connecting to login server...'))
+  loadBox = displayCancelBox(tr('Connecting'), tr('Connecting to login server. Please wait.'))
   connect(loadBox, { onCancel = function(msgbox)
                                   loadBox = nil
                                   protocolLogin:cancelLogin()
@@ -551,7 +551,7 @@ function EnterGame.doLoginHttp()
     return EnterGame.onError("Invalid server url: " .. G.host)    
   end
 
-  loadBox = displayCancelBox(tr('Please wait'), tr('Connecting to login server...'))
+  loadBox = displayCancelBox(tr('Connecting'), tr('Connecting to login server. Please wait.'))
   connect(loadBox, { onCancel = function(msgbox)
                                   loadBox = nil
                                   EnterGame.show()

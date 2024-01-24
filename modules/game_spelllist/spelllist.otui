@@ -84,12 +84,12 @@ MainWindow
   FilterButton
     id: buttonFilterLevel
     !text: tr('Level')
-    !tooltip: tr('Hide spells for higher exp. levels')
+    !tooltip: tr('Hide Higher Levels\' Spells')
 
   FilterButton
     id: buttonFilterVocation
     !text: tr('Vocation')
-    !tooltip: tr('Hide spells for other vocations')
+    !tooltip: tr('Hide Other Vocations\' Spells')
 
   SpellInfoLabel
     id: labelFormula

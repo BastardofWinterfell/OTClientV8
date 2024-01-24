@@ -47,8 +47,8 @@ function init()
 
   sortTypeBox:addOption('Name', 'name')
   sortTypeBox:addOption('Distance', 'distance')
-  sortTypeBox:addOption('Total age', 'age')
-  sortTypeBox:addOption('Screen age', 'screenage')
+  sortTypeBox:addOption('Total Age', 'age')
+  sortTypeBox:addOption('Screen Age', 'screenage')
   sortTypeBox:addOption('Health', 'health')
   sortTypeBox:setCurrentOptionByData(getSortType())
   sortTypeBox.onOptionChange = onChangeSortType

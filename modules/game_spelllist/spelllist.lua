@@ -241,7 +241,17 @@ function updateSpelllist()
     local tmpLabel = spellList:getChildById(spell)
 
     local localPlayer = g_game.getLocalPlayer()
-    if (not(filters.level) or info.level <= localPlayer:getLevel()) and (not(filters.vocation) or table.find(info.vocations, localPlayer:getVocation())) and (filters.vocationId == FILTER_VOCATION_ANY or table.find(info.vocations, filters.vocationId) or table.find(info.vocations, filters.vocationId+4)) and (filters.groupId == FILTER_GROUP_ANY or info.group[filters.groupId]) and (filters.premium == FILTER_PREMIUM_ANY or (info.premium and filters.premium == FILTER_PREMIUM_YES) or (not(info.premium) and filters.premium == FILTER_PREMIUM_NO)) then
+	local pVocation = localPlayer:getVocation()
+	if pVocation == 4 then
+		vocId = 6
+	elseif pVocation == 3 then
+		vocId = 5
+	elseif pVocation == 2 then
+		vocId = 7
+	elseif pVocation == 1 then
+		vocId = 8
+	end	  
+    if (not(filters.level) or info.level <= localPlayer:getLevel()) and (not(filters.vocation) or table.find(info.vocations, vocId)) and (filters.vocationId == FILTER_VOCATION_ANY or table.find(info.vocations, filters.vocationId) or table.find(info.vocations, filters.vocationId+4)) and (filters.groupId == FILTER_GROUP_ANY or info.group[filters.groupId]) and (filters.premium == FILTER_PREMIUM_ANY or (info.premium and filters.premium == FILTER_PREMIUM_YES) or (not(info.premium) and filters.premium == FILTER_PREMIUM_NO)) then
       tmpLabel:setVisible(true)
     else
       tmpLabel:setVisible(false)
@@ -287,7 +297,7 @@ function updateSpellInformation(widget)
     type    = info.type
     level   = info.level
     mana    = info.mana .. ' / ' .. info.soul
-    premium = (info.premium and 'yes' or 'no')
+    premium = (info.premium and 'Yes' or 'No')
     description = info.description or '-'
   end
 

@@ -55,8 +55,10 @@ end
 
 function toggle()
   if trackerWindow:isVisible() then
+	questTrackerButton:setOn(false)					
     trackerWindow:hide()
   else
+	questTrackerButton:setOn(true)				   
     trackerWindow:show()
   end
 end
@@ -279,7 +281,7 @@ function load()
     end)
     if not status then
         return g_logger.error(
-                   "Error while reading profiles file. To fix this problem you can delete storage.json. Details: " ..
+                   "Error while reading profiles file. To fix this problem, delete storage.json. Details: " ..
                        result)
     end
     settings = result
@@ -296,7 +298,7 @@ function save()
   end
   if result:len() > 100 * 1024 * 1024 then
       return g_logger.error(
-                 "Something went wrong, file is above 100MB, won't be saved")
+                 "Something went wrong. File is above 100MB and won't be saved")
   end
   g_resources.writeFileContents(file, result)
 end
